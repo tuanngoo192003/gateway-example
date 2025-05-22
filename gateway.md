@@ -4,6 +4,10 @@ public class AuthFilter implements GatewayFilterFactory<AuthFilter.Config> {
 
     // inject AuthServiceClient here
 
+    public AuthFilter() {
+        super(Config.class);
+    }
+
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
