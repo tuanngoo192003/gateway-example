@@ -1,4 +1,4 @@
-package project.auth.domain.entity.enums;
+package project.core.domain.enums;
 
 public enum OAuthType {
     GOOGLE,

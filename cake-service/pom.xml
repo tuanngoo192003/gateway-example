@@ -7,6 +7,13 @@
   <version>1.0-SNAPSHOT</version>
   <name>cake-service</name>
   <url>http://maven.apache.org</url>
+
+  <parent>
+    <groupId>project</groupId>
+    <artifactId>gateway-demo</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

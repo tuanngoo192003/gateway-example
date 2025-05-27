@@ -1,0 +1,14 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>project</groupId>
+  <artifactId>gateway-demo</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>gateway-core</module>
+    <module>auth-service</module>
+    <module>cake-service</module>
+    <module>gateway-service</module>
+  </modules>
+</project>

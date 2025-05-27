@@ -12,19 +12,23 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import project.core.domain.entity.BaseEntity;
+import project.core.domain.enums.SystemRole;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Table(name = "roles", schema = "public")
-public class Role {
+public class Role extends BaseEntity {
     @Id
     @GeneratedValue() //TODO write UUID generate helper
     private String id;
 
-    private String roleName;
+    private SystemRole roleName;
 
     private Boolean isDeleted;
 

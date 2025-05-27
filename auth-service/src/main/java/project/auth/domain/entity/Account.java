@@ -8,15 +8,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import project.auth.domain.entity.enums.OAuthType;
+import project.core.domain.entity.BaseEntity;
+import project.core.domain.enums.OAuthType;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Table(name = "accounts", schema = "public")
-public class Account {
+public class Account extends BaseEntity {
     
     @Id
     @GeneratedValue() //TODO write UUID generate helper

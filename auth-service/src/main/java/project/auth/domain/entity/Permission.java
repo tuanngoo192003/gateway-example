@@ -12,15 +12,17 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import project.auth.domain.entity.enums.OAuthType;
+import project.core.domain.entity.BaseEntity;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 @Data
 @Table(name = "permissions", schema = "public")
-public class Permission {
+public class Permission extends BaseEntity {
     @Id
     @GeneratedValue() //TODO write UUID generate helper
     private String id;
