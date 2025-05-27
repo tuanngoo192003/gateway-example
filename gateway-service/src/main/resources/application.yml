@@ -18,11 +18,6 @@ spring:
           filters:
             - name: AuthFilter
 
-eureka:
-  client:
-    register-with-eureka: false  # Don't register itself
-    fetch-registry: true         # Can still fetch other services
-
 custom:
   auth:
     get-permission-uri: http://localhost:8080/auth/permission
