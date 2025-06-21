@@ -17,7 +17,6 @@ import project.auth.application.presenter.response.TokenResponse;
 import project.auth.domain.entity.Account;
 import project.core.application.enums.MailFormat;
 import project.core.application.exceptions.BadRequestException;
-import project.core.application.model.response.BaseResponse;
 import project.core.infras.security.JwtProvider;
 
 @Service
@@ -31,7 +30,7 @@ public class AuthService {
 
 	private final AuthenticationManager authenticationManager;
 
-	public BaseResponse<LoginResponse> login(LoginRequest request) throws BadRequestException {
+	public LoginResponse login(LoginRequest request) throws BadRequestException {
 		Account account;
 		if (!isMail(request.getIdentifier())) {
 			account = accountService.findByFields(Map.of("username", request.getIdentifier()));
@@ -47,7 +46,7 @@ public class AuthService {
 			final String accessToken = jwtProvider.generateToken(account.getUsername());
 			final String refreshToken = UUID.randomUUID().toString();
 
-			return new BaseResponse<>(true, "Success!", LoginResponse.builder()
+			return LoginResponse.builder()
 					.id(account.getId())
 					.username(account.getUsername())
 					.email(account.getEmail())
@@ -55,7 +54,7 @@ public class AuthService {
 							.accessToken(accessToken)
 							.refreshToken(refreshToken)
 							.build())
-					.build());
+					.build();
 
 		} catch (Exception e) {
 			log.error("{} - {}", e.getClass().getSimpleName(), e.getMessage());

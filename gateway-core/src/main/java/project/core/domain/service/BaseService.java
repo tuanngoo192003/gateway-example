@@ -32,6 +32,12 @@ public class BaseService<T extends BaseEntity, ID> {
         return repository.save(bean);
     }
 
+    public T updateBean(T bean) {
+        log.info("Insert bean of type ", c.getName());
+        bean.setLastModifiedAt(new Timestamp(System.currentTimeMillis()));
+        return repository.save(bean);
+    }
+
     public T findByFields(Map<String, Object> fields) {
         log.info("Find bean of type ", c.getName());
         return repository.findOne(

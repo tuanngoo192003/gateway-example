@@ -33,7 +33,6 @@ CREATE TABLE roles (
 
 CREATE TABLE permissions (
     id VARCHAR(50) PRIMARY KEY,
-    name VARCHAR(50) NOT NULL UNIQUE,
     uri VARCHAR(255) NOT NULL,
     api_name VARCHAR(255) NOT NULL,
     is_deleted BOOLEAN DEFAULT FALSE,
@@ -54,4 +53,16 @@ CREATE TABLE role_permission (
     PRIMARY KEY (role_id, permission_id),
     FOREIGN KEY role_permission(role_id) REFERENCES roles(id);
     FOREIGN KEY role_permission (permission_id) REFERENCES permissions(id);
+);
+
+CREATE TABLE cake (
+    id VARCHAR(50) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    is_available BOOLEAN DEFAULT true,
+    created_by VARCHAR(50),
+    last_modified_by VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 );

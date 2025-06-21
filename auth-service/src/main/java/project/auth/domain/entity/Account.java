@@ -1,7 +1,6 @@
 package project.auth.domain.entity;
 
 import java.sql.Timestamp;
-import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
