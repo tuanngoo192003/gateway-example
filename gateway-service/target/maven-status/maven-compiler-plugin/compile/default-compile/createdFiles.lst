@@ -1,6 +1,0 @@
-project\gateway\client\AuthClient.class
-project\gateway\helper\TokenHelper.class
-project\gateway\filter\AuthFilter.class
-project\gateway\GatewayApplication.class
-project\gateway\filter\AuthFilter$Config.class
-project\gateway\helper\ResponseHelper.class

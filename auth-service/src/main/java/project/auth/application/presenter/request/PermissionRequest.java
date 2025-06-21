@@ -1,21 +1,21 @@
-package project.auth.application.payload.request;
+package project.auth.application.presenter.request;
 
+import project.core.application.model.request.BaseRequest;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import project.core.application.model.request.BaseRequest;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class LoginRequest extends BaseRequest{
+public class PermissionRequest extends BaseRequest {
 
     @NotNull
-    private String identifer;
+    private String uri;
 
     @NotNull
-    private String password;
+    private String method;
 }

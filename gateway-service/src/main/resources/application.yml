@@ -17,7 +17,20 @@ spring:
             - Path=/cake/**
           filters:
             - name: AuthFilter
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: false
 
-custom:
+grpc:
   auth:
-    get-permission-uri: http://localhost:8080/auth/permission
+    host: localhost
+    port: 8080

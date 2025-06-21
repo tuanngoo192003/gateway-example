@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import project.auth.application.payload.request.LoginRequest;
-import project.auth.application.payload.response.LoginResponse;
+import project.auth.application.presenter.request.LoginRequest;
+import project.auth.application.presenter.response.LoginResponse;
 import project.core.application.BaseController;
 import project.core.application.model.response.BaseResponse;
 

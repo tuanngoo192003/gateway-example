@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "project.core.grpc.auth";
+option java_outer_classname = "HasPermissionProto";
+
+message HasPermissionRequest{
+  string token = 1;
+  string uri = 2;
+  string method = 3;
+}
+
+message HasPermisisonResponse {
+  bool allowed = 1;
+}
+
+service AuthFilterService {
+  rpc hasPermission(HasPermissionRequest) returns (HasPermisisonResponse) {}
+}
+
+
+

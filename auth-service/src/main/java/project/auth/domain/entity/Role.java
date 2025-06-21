@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -25,7 +26,7 @@ import project.core.domain.enums.SystemRole;
 @Table(name = "roles", schema = "public")
 public class Role extends BaseEntity {
     @Id
-    @GeneratedValue() //TODO write UUID generate helper
+    @GeneratedValue(strategy = GenerationType.UUID) 
     private String id;
 
     private SystemRole roleName;

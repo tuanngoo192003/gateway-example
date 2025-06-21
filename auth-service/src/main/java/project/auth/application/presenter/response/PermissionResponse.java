@@ -1,4 +1,4 @@
-package project.auth.application.payload.response;
+package project.auth.application.presenter.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,6 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TokenResponse {
-	private String accessToken;
-	private String refreshToken;
+public class PermissionResponse {
+    private Boolean allow;
 }
