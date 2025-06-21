@@ -19,6 +19,23 @@ services:
     networks:
       - devnet
 
+  gatewaydb:
+    container_name: gateway-db
+    image: postgres
+    restart: always
+    volumes:
+      - gateway-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=gatewaydb
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    networks:
+      - devnet
+
+volumes:
+  gateway-db-data:
+    
 networks:
   devnet:
     external: true
