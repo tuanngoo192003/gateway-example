@@ -2,6 +2,7 @@ package project.core.application;
 
 import java.lang.reflect.Field;
 
+import org.apache.coyote.BadRequestException;
 import org.springframework.http.ResponseEntity;
 
 import jakarta.validation.constraints.NotNull;
@@ -10,7 +11,7 @@ import project.core.application.model.response.BaseResponse;
 
 public class BaseController {
 
-    protected void validateRequest(BaseRequest request) {
+    protected void validateRequest(BaseRequest request) throws BadRequestException{
         Class<?> clazz = request.getClass();
         Field[] fields = clazz.getDeclaredFields();
 
@@ -25,7 +26,7 @@ public class BaseController {
                         throw new IllegalArgumentException("Field '" + field.getName() + "' must not be null");
                     }
                 } catch (IllegalAccessException e) {
-                    throw new RuntimeException("Could not access field: " + field.getName(), e);
+                    throw new BadRequestException("Could not access field: " + field.getName(), e);
                 }
             }
 

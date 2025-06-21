@@ -13,6 +13,7 @@ import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.devh.boot.grpc.server.service.GrpcService;
+import project.core.application.exceptions.BadRequestException;
 import project.core.grpc.auth.HasPermissionProto;
 import project.core.grpc.auth.AuthFilterServiceGrpc.AuthFilterServiceImplBase;
 import project.core.infras.security.JwtProvider;
@@ -66,7 +67,7 @@ public class AuthFilterService extends AuthFilterServiceImplBase {
 
     }
 
-    private List<Permission> buildPermissions(UserDetails userDetails) {
+    private List<Permission> buildPermissions(UserDetails userDetails) throws BadRequestException {
         List<Permission> permissions = new ArrayList<>();
         try {
             userDetails.getAuthorities().stream().forEach(authority -> {
@@ -75,10 +76,10 @@ public class AuthFilterService extends AuthFilterServiceImplBase {
                             Permission.class);
                     permissions.add(permission);
                 } catch (JsonProcessingException jpe) {
-                    throw new RuntimeException("Permission parsing failed!");
+                    throw new BadRequestException("Permission parsing failed!");
                 }
             });
-        } catch (RuntimeException e) {
+        } catch (BadRequestException e) {
             throw e;
         }
         return permissions;

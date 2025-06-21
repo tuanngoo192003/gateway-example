@@ -16,6 +16,7 @@ import project.auth.application.presenter.response.LoginResponse;
 import project.auth.application.presenter.response.TokenResponse;
 import project.auth.domain.entity.Account;
 import project.core.application.enums.MailFormat;
+import project.core.application.exceptions.BadRequestException;
 import project.core.application.model.response.BaseResponse;
 import project.core.infras.security.JwtProvider;
 
@@ -30,7 +31,7 @@ public class AuthService {
 
 	private final AuthenticationManager authenticationManager;
 
-	public BaseResponse<LoginResponse> login(LoginRequest request) {
+	public BaseResponse<LoginResponse> login(LoginRequest request) throws BadRequestException {
 		Account account;
 		if (!isMail(request.getIdentifier())) {
 			account = accountService.findByFields(Map.of("username", request.getIdentifier()));
@@ -58,7 +59,7 @@ public class AuthService {
 
 		} catch (Exception e) {
 			log.error("{} - {}", e.getClass().getSimpleName(), e.getMessage());
-			throw new RuntimeException("Invalid credential!");
+			throw new BadRequestException("Invalid credential!");
 		}
 	}
 
