@@ -34,12 +34,6 @@ public class Permission extends BaseEntity {
 
     private String method;
 
-    private Boolean isDeleted;
-
-    private Timestamp createdDate;
-
-    private Timestamp lastModifiedDate;
-
     @ManyToMany
     @JoinTable(
         name = "role_permission",

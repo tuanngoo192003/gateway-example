@@ -17,3 +17,16 @@ spring:
         format_sql: true
       jdbc:
         time_zone: ${DB_TIME_ZONE:Asia/Ho_Chi_Minh}
+
+grpc:
+  server:
+    security:
+      enabled: false
+
+jwt:
+  access-token:
+    expiration: ${ACCESS_TOKEN_EXPIRATION}
+  refresh-token:
+    expiration: ${REFRESH_TOKEN_EXPIRATION}
+  secret-key: ${SECRET_KEY}
+

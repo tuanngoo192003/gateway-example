@@ -37,12 +37,6 @@ public class Account extends BaseEntity {
 
     private OAuthType oAuthType;
 
-    private Boolean isDeleted;
-
-    private Timestamp createdDate;
-
-    private Timestamp lastModifiedDate;
-
     @ManyToOne
     private Role role;
 

@@ -31,11 +31,7 @@ public class Role extends BaseEntity {
 
     private SystemRole roleName;
 
-    private Boolean isDeleted;
-
-    private Timestamp createdDate;
-
-    private Timestamp lastModifiedDate;
+    private String description;
 
     @ManyToMany
     @JoinTable(
