@@ -20,6 +20,10 @@ UPDATE permissions
 SET method = 'PUT'
 WHERE method = 'updateCake';
 
+UPDATE permissions
+SET uri = '/cake/'
+WHERE uri = '/cake';
+
 INSERT INTO permissions (id, permission_name, uri, method) 
     VALUES ('2c88a1cd-066e-4a33-882c-56d5b3fa8dfc', 'CREATE_CAKE', '/', 'createCake'),
         ('75c69d95-c3f5-45db-b66b-2cb798a3383e', 'UPDATE_CAKE', '/', 'updateCake'),

@@ -3,13 +3,41 @@ POST http://localhost:8082/auth/login
 Content-Type: application/json
 
 {
-  "identifier": "admin",
+  "identifier": "kiet.quachthe",
   "password": "VTI123456"
 }
 
 @access_token = {{login.response.body.data.token.accessToken}}
 
-### or just a blank line is also fine
+### Get cakes
 
 GET http://localhost:8082/cake/all
 Authorization: Bearer {{access_token}}
+
+### Create cake
+
+POST http://localhost:8082/cake/
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "name": "Red Velvet",
+  "description": "Soft and fluffy rose like beautiful red cake",
+  "price": 65000,
+  "isAvailable": true
+}
+
+### Update cake
+
+PUT http://localhost:8082/cake/
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "id": "06a88a26-2de3-4015-9875-e9d7b14b2e3b",
+  "name": "Red Velvet",
+  "description": "Soft and fluffy rose like beautiful red cake",
+  "price": 65000,
+  "isAvailable": true,
+  "isDeleted": false
+}

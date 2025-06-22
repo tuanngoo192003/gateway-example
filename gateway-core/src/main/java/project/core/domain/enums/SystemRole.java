@@ -3,7 +3,7 @@ package project.core.domain.enums;
 public enum SystemRole {
     ADMIN,
 	MANAGER,
-	EMPLOYEE;
+	CUSTOMER;
 	public static SystemRole fromStringToEnum(String input) {
         if (input == null) {
             throw new IllegalArgumentException("Input không được null");

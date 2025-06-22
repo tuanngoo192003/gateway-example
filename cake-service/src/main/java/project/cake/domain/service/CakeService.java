@@ -48,7 +48,7 @@ public class CakeService extends BaseService<Cake, String> {
 
         Cake cake = findByFields(Map.of("id", request.getId()));
 
-        if (cake.getIsDeleted().booleanValue()) {
+        if (request.getIsDeleted().booleanValue()) {
             cake.setIsDeleted(true);
             updateBean(cake);
             return CakeUpdateResponse.builder().build();
