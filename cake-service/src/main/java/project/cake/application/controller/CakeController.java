@@ -27,14 +27,14 @@ public class CakeController extends BaseController {
     
     private final CakeService cakeService;
 
-    @PostMapping("")
+    @PostMapping("/")
 	public ResponseEntity<BaseResponse<CakeCreateResponse>> createCake(@RequestBody CakeCreateRequest request) throws Exception {
         validateRequest(request);
         CakeCreateResponse response = cakeService.createCake(request);
         return doResponse(response);
 	}
 
-    @PutMapping("")
+    @PutMapping("/")
 	public ResponseEntity<BaseResponse<CakeUpdateResponse>> updateCake(@RequestBody CakeUpdateRequest request) throws Exception {
         validateRequest(request);
         CakeUpdateResponse response = cakeService.updateCake(request);

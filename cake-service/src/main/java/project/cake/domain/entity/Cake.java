@@ -17,7 +17,7 @@ import project.core.domain.entity.BaseEntity;
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Table(name = "cakes", schema = "public")
+@Table(name = "cake", schema = "public")
 public class Cake extends BaseEntity {
     
     @Id

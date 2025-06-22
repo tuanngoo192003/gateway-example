@@ -20,8 +20,8 @@ public class CakeService extends BaseService<Cake, String> {
 
     private CakeRepository repository;
 
-    public CakeService(Class<Cake> c, BaseRepository<Cake, String> repository) {
-        super(c, repository);
+    public CakeService(BaseRepository<Cake, String> repository) {
+        super(Cake.class, repository);
         this.repository = (CakeRepository) repository;
     }
 

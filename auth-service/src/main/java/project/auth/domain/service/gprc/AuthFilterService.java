@@ -35,9 +35,8 @@ public class AuthFilterService extends AuthFilterServiceImplBase {
             StreamObserver<HasPermissionProto.HasPermisisonResponse> responseObserver) {
         HasPermissionProto.HasPermisisonResponse.Builder response = HasPermissionProto.HasPermisisonResponse
                 .newBuilder();
-        String token = request.getToken().substring(7);
         try {
-            String username = jwtProvider.getUsernameFromToken(token);
+            String username = jwtProvider.getUsernameFromToken(request.getToken());
 
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             List<Permission> permissions = buildPermissions(userDetails);
@@ -48,9 +47,12 @@ public class AuthFilterService extends AuthFilterServiceImplBase {
                     .build();
 
             if (!permissions.contains(currentAccess)) {
+                log.info("permissions: {}", permissions);
+                log.info("currentAccess: {}", currentAccess);
                 response.setAllowed(false);
                 responseObserver.onNext(response.build());
                 responseObserver.onCompleted();
+                return;
             }
 
             response.setAllowed(true);
@@ -58,7 +60,7 @@ public class AuthFilterService extends AuthFilterServiceImplBase {
             responseObserver.onCompleted();
 
         } catch (Exception e) {
-            log.error("Unexpected error");
+            log.error("Unexpected error: {}", e.getMessage());
 
             response.setAllowed(false);
             responseObserver.onNext(response.build());

@@ -8,7 +8,7 @@ import project.core.domain.repository.BaseRepository;
 import project.core.domain.service.BaseService;
 
 @Service
-public class AccountService extends BaseService<Account, String>{
+public class AccountService extends BaseService<Account, String> {
 
     private final AccountRepository accountRepository;
 
@@ -16,5 +16,5 @@ public class AccountService extends BaseService<Account, String>{
         super(Account.class, repository);
         this.accountRepository = (AccountRepository) repository;
     }
-    
+
 }

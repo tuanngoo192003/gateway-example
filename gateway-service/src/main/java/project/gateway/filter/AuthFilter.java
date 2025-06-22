@@ -47,6 +47,9 @@ public class AuthFilter implements GatewayFilterFactory<AuthFilter.Config>{
             String path = request.getURI().getPath();
             String method = request.getMethod().name();
 
+            if (path.contains("/login")) {
+                return chain.filter(exchange);
+            }
             // Call auth-service to validate permission
             boolean hasPermission = authClient.hasPermission(token, path, method);
             if (!hasPermission) {

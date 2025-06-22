@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: API-GATEWAY-SERVICE
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+      - org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
   cloud:
     gateway:
       routes:
@@ -33,4 +38,4 @@ spring:
 grpc:
   auth:
     host: localhost
-    port: 8080
+    port: 9090

@@ -1,0 +1,15 @@
+# @name login
+POST http://localhost:8082/auth/login
+Content-Type: application/json
+
+{
+  "identifier": "admin",
+  "password": "VTI123456"
+}
+
+@access_token = {{login.response.body.data.token.accessToken}}
+
+### or just a blank line is also fine
+
+GET http://localhost:8082/cake/all
+Authorization: Bearer {{access_token}}

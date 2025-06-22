@@ -18,7 +18,7 @@ import project.core.application.model.response.BaseResponse;
 @RequestMapping("/auth")
 public class AuthController extends BaseController {
 
-	private AuthService authService;
+	private final AuthService authService;
 
     @PostMapping("/login")
 	public ResponseEntity<BaseResponse<LoginResponse>> login(@RequestBody LoginRequest loginRequest) throws Exception {

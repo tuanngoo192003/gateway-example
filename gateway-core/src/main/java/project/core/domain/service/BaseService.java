@@ -25,7 +25,7 @@ public class BaseService<T extends BaseEntity, ID> {
     }
 
     public T insertBean(T bean) {
-        log.info("Insert bean of type ", c.getName());
+        log.info("Insert bean of type {}", c.getSimpleName());
         bean.setIsDeleted(false);
         bean.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         bean.setLastModifiedAt(new Timestamp(System.currentTimeMillis()));
@@ -33,16 +33,23 @@ public class BaseService<T extends BaseEntity, ID> {
     }
 
     public T updateBean(T bean) {
-        log.info("Insert bean of type ", c.getName());
+        log.info("Insert bean of type {}", c.getSimpleName());
         bean.setLastModifiedAt(new Timestamp(System.currentTimeMillis()));
         return repository.save(bean);
     }
 
     public T findByFields(Map<String, Object> fields) {
-        log.info("Find bean of type ", c.getName());
-        return repository.findOne(
+        log.info("Find bean of type {}", c.getSimpleName());
+        T result = repository.findOne(
                 (root, query, criteriaBuilder) -> criteriaBuilder
-                        .and(buildPredicates(fields, criteriaBuilder, root).toArray(new Predicate[0]))).orElse(null);
+                        .and(buildPredicates(fields, criteriaBuilder, root).toArray(new Predicate[0])))
+                .orElse(null);
+        if (result == null) {
+            log.info("No bean of type {} was found", c.getSimpleName());
+            return null;
+        }
+        log.info("Found bean of type {}: {}", c.getSimpleName(), result);
+        return result;
     }
 
     public List<Predicate> buildPredicates(Map<String, Object> fields, CriteriaBuilder builder, Root<T> root) {

@@ -27,6 +27,7 @@ services:
       - gateway-db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=gatewaydb
+      - POSTGRES_USER=gateway
       - POSTGRES_PASSWORD=password
     ports:
       - "5432:5432"
